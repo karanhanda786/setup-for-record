@@ -1,0 +1,40 @@
+{% extends 'karexpire/base.html' %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add|Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body style=" background-color: #e9ebee;">
+    {% block content %}
+      <div class="jumbotron">
+        <h1 class="display-4">Add Your Product Here!</h1>
+        <p class="lead">Please Enter All Fields to Get Back Better Result</p>
+        <hr class="my-4">
+        <h3>Easy & Quick</h3>
+        <hr>
+        <form action="{% url 'expires:createProduct' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputEmail1">Product Name</label>
+            <input type="text" name="product_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Product" required>
+            <small id="emailHelp" class="form-text text-muted">Start with capital word.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Expire Date</label>
+            <input type="date" name="expire_at" class="form-control" id="exampleInputPassword1" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Company Name</label>
+            <input type="text" name="Company_name" class="form-control" id="exampleInputPassword1" placeholder="Company" required>
+
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+    {% endblock content %}
+  </body>
+</html>

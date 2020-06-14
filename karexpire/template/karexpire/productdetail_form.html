@@ -1,0 +1,33 @@
+{% extends 'karexpire/base.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% block content %}
+    <div style="width:100%; margin:auto;" class="row">
+      <div class="col-4" style="max-width:inherit; flex:auto;">
+        <div class="list-group" id="list-tab" role="tablist">
+
+          {% for product in productdetail %}
+            <a  style="text-align:center;" class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+              <h3>
+                <span class="alert alert-success" style="padding: 0.50rem 1.25rem;">{{product.product_name|lower|capfirst|title}}</span> | {{product.Created_at|date:"d D, Y"}}
+              </h3>
+              <hr>
+              <h4>
+                Expire at: <span class="alert alert-danger" style="padding: 0.50rem 1.25rem;">{{product.expire_at|date:"d D, Y"}}</span>
+              </h4>
+              <h4>Company: {{product.Company_name|lower|capfirst|title}}</h4>
+            </a>
+            <br>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% endblock content %}
+  </body>
+</html>
